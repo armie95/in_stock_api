@@ -1,19 +1,24 @@
-const dotenv = require("dotenv");
+//Install necessary modules
 const express = require("express");
+const app = express();
+const PORT = process.env.PORT || 8080;
 const cors = require("cors");
 
-dotenv.config();
-const app = express();
-const port = process.env.PORT || 8080;
+require('dotenv').config()
 
-app.use(express.static("public"));
-app.use(cors());
+//Use JSON middleware and CORS
 app.use(express.json());
+app.use(cors());
 
-app.get("/", function (req, res) {
-  res.send("<h3 style='text-align: center;'>In Stock API - HOME PAGE</h3>");
-});
+//Link necessary routes
+const warehouseRoutes = require('./routes/warehouseRoute');
+const inventortRoutes = require('./routes/inventoryRoute');
 
-app.listen(port, function () {
-  console.log(`Server is running on: http://localhost:${port} 🔥`);
+//Use the routes for API calls
+app.use('/warehouse', warehouseRoutes);
+app.use('/inventory', inventortRoutes);
+
+
+app.listen(PORT, () => {
+  console.log(`Server is running on: http://localhost:${PORT}`);
 });
