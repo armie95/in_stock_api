@@ -8,7 +8,8 @@ const inventoryController = require('../controllers/inventoryController');
 
 //API TO GET SINGLE INVENTORY ITEM FROM SINGLE WAREHOUSE
 router
-  .route('/:item_name/:id')
+  .route('/:name/:id')
   .get(inventoryController.singleInventory)
+
 
 module.exports = router;
