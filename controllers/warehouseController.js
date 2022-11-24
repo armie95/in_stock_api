@@ -9,4 +9,8 @@ exports.index = async (req, res) => {
     } catch (err) {
         res.status(400).send(`Error retrieving Warehouses: ${err}`)
     }
+};
+
+exports.deleteWarehouse = async (req, res) => {
+    
 }

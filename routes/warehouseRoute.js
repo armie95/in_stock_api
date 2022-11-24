@@ -6,5 +6,7 @@ const warehouseController = require('../controllers/warehouseController');
 router
     .route('/')
     .get(warehouseController.index)
+    .get(warehouseController.deleteWarehouse);
 
+    
 module.exports = router;
