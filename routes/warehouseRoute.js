@@ -9,6 +9,7 @@ router
 
 router
     .route('/:id/edit')
+    .get(warehouseController.getInfoForEdit)
     .patch(warehouseController.editWarehouse)
 
 module.exports = router;
