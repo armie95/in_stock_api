@@ -10,3 +10,4 @@ exports.index = async (req, res) => {
         res.status(400).send(`Error retrieving Warehouses: ${err}`)
     }
 }
+
