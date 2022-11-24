@@ -8,5 +8,4 @@ router
     .get(warehouseController.index)
     .get(warehouseController.deleteWarehouse);
 
-    
 module.exports = router;
