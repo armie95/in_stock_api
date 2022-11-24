@@ -7,4 +7,8 @@ router
     .route('/')
     .get(warehouseController.index)
 
+router
+    .route('/:id/edit')
+    .patch(warehouseController.editWarehouse)
+
 module.exports = router;
