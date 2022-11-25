@@ -68,13 +68,14 @@ exports.addWarehouse = async (req, res) => {
       .status(400)
       .send("Please make sure to fill out the form completely");
   }
+
   try {
     const newWarehouse = req.body;
     newWarehouse.id = uuidv4();
-    const data = await knex("warehouses").insert(newWarehouse);
-    const newWarehouseURL = `/warehouses/${data[0]}`;
-    res.status(201).location(newWarehouseURL).send(newWarehouseURL);
+    const data = await knex('warehouses').insert(newWarehouse);
+    const newWarehouseURL = `/warehouse/${newWarehouse.id}`;
+    res.status(201).location(newWarehouseURL).send(newWarehouseURL)
   } catch (err) {
-    res.status(400).send(`Error creating warehouse: ${err}`);
+    res.status(400).send(`Error creating warehouse: ${err}`)
   }
 };
