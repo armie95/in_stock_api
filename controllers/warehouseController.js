@@ -51,3 +51,18 @@ exports.getWarehouseDataById = async (req, res) => {
       );
   }
 };
+
+exports.addWarehouse = async(req, res) => {
+    try {
+      if(!req.body.warehouse_name || !req.body.address || !req.body.city 
+        || !req.body.country || !req.body.contact_name || !req.body.contact_position
+        || !req.body.contact_phone
+        || !req.body.contact_email) {
+          return res.status(400).send('Please make sure to fill out the form completely')
+         }
+
+      const newWarehouse = await knex('warehouses');
+    } catch (err) {
+      res.status(400).send(`Error creating warehouse: ${err}`)
+    }
+}
