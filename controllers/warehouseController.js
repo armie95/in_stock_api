@@ -12,16 +12,15 @@ exports.index = async (req, res) => {
 };
 
 exports.getInfoForEdit = async (req, res) => {
-    try {
+    try { 
         const warehouseData = await knex('warehouses')
-            .select('id', 'warehouse_name', 'address', 'city', 'country', 'contact_name', 'contact_position', 'contact_phone', 'contact_email');
-            res.status(200).json(warehouseData);
+        .select('id', 'warehouse_name', 'address', 'city', 'country', 'contact_name', 'contact_position', 'contact_phone', 'contact_email')
+        .where({id: req.params.id})
+        res.status(200).json(warehouseData);
     } catch (err) {
         res.status(400).send(`Error retrieving Warehouses: ${err}`)
     }
 };
-
-
 
 
 
@@ -47,6 +46,6 @@ try {
     .where({id: req.params.id}).update(req.body);
     res.status(200).send(`Warehouse with id: ${req.params.id} has been updated`);
     } 
-    catch (err) {res.status(400).send(`Error updating Warehouse ${req.params.id} ${err}`)}
+    catch (err) {res.status(400).send(`Error updating Warehouse ${req.params.id} ${err}`)};
     
-}
+};
