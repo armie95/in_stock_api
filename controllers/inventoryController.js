@@ -1,6 +1,7 @@
 //Import knex so the controller has access to the DB
 const knex = require('knex')(require('../knexfile')); 
 
+
 //API TO POST INVENTORY ITEM
 exports.addInventory = async (req, res) => {
     // Validate the request body for required data
