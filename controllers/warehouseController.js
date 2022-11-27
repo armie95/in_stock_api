@@ -33,7 +33,7 @@ exports.getInfoForEdit = async (req, res) => {
 
 exports.editWarehouse = async (req, res) => {
    
-        const re = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/g;
+        const re = /^(\+|00)[1-9][0-9 \-\(\)\.]{7,32}$/;
         const emailPattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         if(!req.body.warehouse_name || !req.body.address || !req.body.city || !req.body.country || !req.body.contact_name || !req.body.contact_position || !req.body.contact_phone || !req.body.contact_email)
         {return res.status(400).send('Please complete all fields')}
