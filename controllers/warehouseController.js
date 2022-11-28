@@ -25,22 +25,16 @@ exports.getWarehouseDataById = async (req, res) => {
 
   try {
     const warehouseData = await knex("warehouses")
-      .join("inventories", "warehouses.id", "=", "inventories.warehouse_id")
       .where("warehouses.id", "=", warehouseID)
       .select(
-        "inventories.warehouse_id",
+        "warehouses.id",
         "warehouses.warehouse_name",
         "warehouses.address",
         "warehouses.city",
         "warehouses.country",
         "warehouses.contact_name",
         "warehouses.contact_phone",
-        "warehouses.contact_email",
-        "inventories.id",
-        "inventories.item_name",
-        "inventories.description",
-        "inventories.category",
-        "inventories.quantity"
+        "warehouses.contact_email"
       );
     res.status(200).json(warehouseData);
   } catch (err) {
