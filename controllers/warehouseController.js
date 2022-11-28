@@ -30,26 +30,18 @@ exports.deleteWarehouse = async (req, res) => {
 
 // Get all warehouse data by warehouse id:
 exports.getWarehouseDataById = async (req, res) => {
-  const warehouseID = req.params.id;
-
   try {
     const warehouseData = await knex("warehouses")
-      .join("inventories", "warehouses.id", "=", "inventories.warehouse_id")
-      .where("warehouses.id", "=", warehouseID)
+      .where({id: req.params.id})
       .select(
-        "inventories.warehouse_id",
         "warehouses.warehouse_name",
         "warehouses.address",
         "warehouses.city",
         "warehouses.country",
         "warehouses.contact_name",
+        "warehouses.contact_position",
         "warehouses.contact_phone",
-        "warehouses.contact_email",
-        "inventories.id",
-        "inventories.item_name",
-        "inventories.description",
-        "inventories.category",
-        "inventories.quantity"
+        "warehouses.contact_email"
       );
     res.status(200).json(warehouseData);
   } catch (err) {
@@ -60,6 +52,16 @@ exports.getWarehouseDataById = async (req, res) => {
       );
   }
 };
+
+exports.getWarehouseInventoryById = async (req, res) => {
+  try {
+    const data = await knex("inventories")
+      .where({warehouse_id: req.params.id})
+      res.status(200).json(data)
+  } catch (err) {
+    res.status(400).send(`Error retrieving Warehouse with the given ID of ${warehouseID} ${err}`)
+  }
+}
 
 exports.addWarehouse = async (req, res) => {
   //Making sure all fields are complete
