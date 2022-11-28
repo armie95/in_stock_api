@@ -7,8 +7,8 @@ module.exports = {
   connection: {
     host: '127.0.0.1',
     charset: 'utf8',
-    database: 'instock',
-    user: 'root',
-    password: 'rootroot',
+    database: process.env.DB_LOCAL_DBNAME,
+    user: process.env.DB_LOCAL_USER,
+    password: process.env.DB_LOCAL_PASSWORD,
   },
 };
