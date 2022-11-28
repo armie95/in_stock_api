@@ -12,11 +12,11 @@ app.use(cors());
 
 //Link necessary routes
 const warehouseRoutes = require('./routes/warehouseRoute');
-const inventortRoutes = require('./routes/inventoryRoute');
+const inventoryRoutes = require('./routes/inventoryRoute');
 
 //Use the routes for API calls
 app.use('/warehouse', warehouseRoutes);
-app.use('/inventory', inventortRoutes);
+app.use('/inventory', inventoryRoutes);
 
 
 app.listen(PORT, () => {
