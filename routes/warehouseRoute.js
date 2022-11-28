@@ -6,7 +6,8 @@ const warehouseController = require("../controllers/warehouseController");
 router
     .route("/")
     .get(warehouseController.index)
-    .post(warehouseController.addWarehouse);
+    .post(warehouseController.addWarehouse)
+    .delete(warehouseController.deleteWarehouse);
 
 router.route("/:id").get(warehouseController.getWarehouseDataById);
 
