@@ -2,6 +2,7 @@
 //Import controller for all functions that need to modify the DB.
 const router = require("express").Router();
 const warehouseController = require("../controllers/warehouseController");
+const inventoryController = require("../controllers/inventoryController");
 
 router
     .route("/")
@@ -21,5 +22,9 @@ router
 router
     .route('/:id/inventory')
     .get(warehouseController.getWarehouseInventoryById);
+
+router
+  .route("/:id/inventory")
+  .get(inventoryController.getInventoriesByWarehouseId);
 
 module.exports = router;
