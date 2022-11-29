@@ -5,18 +5,16 @@ const {v4: uuidv4} = require('uuid');
 exports.index = async (req, res) => {
   try {
     const inventoriesData = await knex("inventories")
-      .join("warehouses", "warehouses.id", "=", "inventories.warehouse_id")
+      .join("warehouses", "inventories.warehouse_id", "=", "warehouses.id")
       .select(
         "inventories.id",
         "inventories.warehouse_id",
-        "warehouses.warehouse_name",
         "inventories.item_name",
         "inventories.description",
         "inventories.category",
         "inventories.status",
         "inventories.quantity",
-        "inventories.created_at",
-        "inventories.updated_at"
+        "warehouses.warehouse_name"
       );
     res.status(200).json(inventoriesData);
   } catch (err) {

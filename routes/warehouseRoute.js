@@ -14,6 +14,12 @@ router
     .get(warehouseController.getInfoForEdit)
     .put(warehouseController.editWarehouse)
 
-router.route("/:id").get(warehouseController.getWarehouseDataById);
+router
+    .route("/:id")
+    .get(warehouseController.getWarehouseDataById)
+    
+router
+    .route('/:id/inventory')
+    .get(warehouseController.getWarehouseInventoryById);
 
 module.exports = router;
