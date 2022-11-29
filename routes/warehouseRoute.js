@@ -23,8 +23,8 @@ router
     .route('/:id/inventory')
     .get(warehouseController.getWarehouseInventoryById);
 
-router
-  .route("/:id/inventory")
-  .get(inventoryController.getInventoriesByWarehouseId);
+// router
+//   .route("/:id/inventory")
+//   .get(inventoryController.getInventoriesByWarehouseId);
 
 module.exports = router;

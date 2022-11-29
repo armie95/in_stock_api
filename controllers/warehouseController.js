@@ -68,7 +68,6 @@ exports.getWarehouseDataById = async (req, res) => {
   try {
     const warehouseData = await knex("warehouses")
       .where({id: req.params.id})
-      .where("warehouses.id", "=", warehouseID)
       .select(
         "warehouses.warehouse_name",
         "warehouses.address",
@@ -84,7 +83,7 @@ exports.getWarehouseDataById = async (req, res) => {
     res
       .status(400)
       .send(
-        `Error retrieving Warehouse with the given ID of ${warehouseID} ${err}`
+        `Error retrieving Warehouse ${err}`
       );
   }
 };
