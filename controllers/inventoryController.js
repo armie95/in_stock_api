@@ -53,10 +53,10 @@ exports.singleInventory = async (req, res) => {
 // API TO DELETE SINGLE INVENTORY
 exports.deleteInventory = async (req,res) => {
   try{
-      await knex('inventories').where({id : req.params.id}).delete();
+      await knex('inventories').where({id : req.body.id}).delete();
       res.status(204);
   } catch(error){
-      res.status(400).send(`Error deleting Warehouse ${req.params.id} ${error}`);
+      res.status(400).send(`Error deleting Warehouse ${req.body.id} ${error}`);
   }
 };
 
