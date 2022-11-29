@@ -77,3 +77,15 @@ exports.addInventory= async (req, res) => {
       res.status(400).send(`Error creating Inventory: ${err}`);
   }
 };
+//API TO EDIT INVENTORY ITEM
+exports.updateInventory = async (req, res) => {
+  // this will check if all the fields are filled it (as it should)
+  if (!req.body.item_name || !req.body.description || !req.body.category || !req.body.status || !req.body.quantity || !req.body.warehouse_name) { 
+    return res.status(400).send('Ensure that every that the form is completed!') }
+  try {
+    await knex('inventories')
+      .where({ id: req.params.id }).update(req.body);
+    res.status(200).send(`Warehouse with id: ${req.params.id} has been updated`);
+  }
+  catch (error) { res.status(400).send(`Error updating Warehouse ${req.params.id} ${error}`) };
+};
